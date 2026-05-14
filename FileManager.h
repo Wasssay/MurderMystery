@@ -24,7 +24,6 @@ public:
 
     void saveGameRecord(bool solved, int timeElapsed) {
         std::ofstream file(userDatabaseFile, std::ios::app);
-
         if (file.is_open()) {
             file << "Date: " << getCurrentDateTime() << "\n";
             file << "Result: " << (solved ? "Case SOLVED" : "FAILED to Solve") << "\n";
@@ -41,14 +40,11 @@ public:
     void displayUserHistory() {
         std::ifstream file(userDatabaseFile);
         std::string line;
-
         std::cout << "\n===== YOUR DETECTIVE RECORD =====\n";
-
         if (!file.is_open()) {
             std::cout << "No past records found. This is your first case!\n";
             return;
         }
-
         while (getline(file, line)) {
             std::cout << line << "\n";
         }
